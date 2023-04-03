@@ -1,15 +1,10 @@
 import CountryList from "@/components/CountryList";
 import FilterDropDown from "@/components/FilterDropDown";
 import SearchBar from "@/components/SearchBar";
-
-async function getAllCountries() {
-  const res = await fetch("https://restcountries.com/v3.1/all");
-  const countries = await res.json();
-  return countries;
-}
+import { fetchAllCountries } from "@/utils/dataFetching";
 
 export default async function Home() {
-  const countries = await getAllCountries();
+  const countries = await fetchAllCountries();
 
   return (
     <div className="">

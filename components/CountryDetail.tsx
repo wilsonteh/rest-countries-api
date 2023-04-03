@@ -5,10 +5,9 @@ import { useEffect, useState } from "react";
 import Label from "./Label";
 import Image from "next/image";
 import { fetchCountryByCode } from "@/utils/dataFetching";
-import { log } from "console";
 
 interface Country {
-  borderCountries: string[] | undefined; // may'nt hav 'borders' property (e.g: Singapore)
+  borderCountries?: string[]; // may'nt hav 'borders' property (e.g: Singapore)
   capital: string;
   coatOfArms: {
     img: string;
@@ -99,8 +98,6 @@ const CountryDetail = (countryData: any) => {
 
 
   useEffect(() => {
-    console.log("effect called");
-
     country.borderCountries?.map(async (code: string) => {
       const borderCountry = await fetchCountryByCode(code);
       setBorderCountries((prev) => [

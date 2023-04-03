@@ -3,15 +3,16 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Header = () => {
-  const [theme, setTheme] = useState<string>();
+  const [theme, setTheme] = useState<string>("dark");
 
   const toggleDarkMode = () => {
-    if (localStorage.theme === 'dark') {
+
+    if (localStorage.theme === 'dark') {   // chg to light theme
       localStorage.theme = 'light'
       setTheme('light')
       document.documentElement.classList.remove('dark')
       
-    } else {
+    } else { // chg to dark theme
       localStorage.theme = 'dark'
       setTheme('dark')
       document.documentElement.classList.add('dark')
@@ -20,8 +21,6 @@ const Header = () => {
 
   useEffect(() => {
     setTheme(localStorage.theme)
-    console.log(theme);
-
   }, [theme])
   
 
@@ -38,8 +37,8 @@ const Header = () => {
           <span className="material-symbols-outlined">
             { theme === 'dark' ? 'light_mode' : 'dark_mode'}
           </span>
-          <span className="font-semibold">
-            { theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+          <span className="font-semibold capitalize">
+            { `${theme} mode` }
           </span>
         </button>
       </div>

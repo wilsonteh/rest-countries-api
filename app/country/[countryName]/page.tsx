@@ -1,12 +1,13 @@
 import CountryDetail from "@/components/CountryDetail";
+import { fetchCountryByName } from "@/utils/dataFetching";
 
-async function fetchCountryByName(name: string) {
-  const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
-  const country = await res.json();
-  return country[0];
+interface Props {
+  params: {
+    countryName: string;
+  }
 }
 
-export default async function CountryDetailPage({ params }: { params: { countryName: string } }) {
+export default async function CountryDetailPage({ params }: Props) {
   const { countryName } = params;
   const countryData = await fetchCountryByName(countryName);
 
