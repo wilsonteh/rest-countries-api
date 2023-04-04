@@ -37,9 +37,6 @@ const Header = () => {
           <span className="material-symbols-outlined">
             { theme === 'dark' ? 'light_mode' : 'dark_mode'}
           </span>
-          <span className="font-semibold capitalize">
-            { `${theme} mode` }
-          </span>
         </button>
       </div>
     </header>

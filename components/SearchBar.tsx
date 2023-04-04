@@ -1,19 +1,21 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-const SearchBar = () => {
+interface Props {
+  className?: string;
+}
+
+const SearchBar = ({ className }: Props) => {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
   const searchBarDiv = useRef<HTMLDivElement>(null);
 
-  // useEffect(() => {
-
-  // }, [isFocus])
-  
-
   return (
-    <div ref={searchBarDiv} className={`bg-slate-50 dark:bg-slate-700 rounded-lg min-w-[500px] border-2 
-      ${ isFocus ? 'border-slate-300 dark:border-slate-500' : 'border-slate-200 dark:border-slate-800' } `} >
+    // w-fit sm:w-auto
+    <div ref={searchBarDiv} className={`${className} bg-slate-50 dark:bg-slate-700 rounded-lg 
+      sm:min-w-[490px] border-2 
+      ${ isFocus ? 'border-slate-300 dark:border-slate-500' : 'border-slate-200 dark:border-slate-800' } `} 
+      >
       <label htmlFor="search-input" className="dark:text-slate-200 flex items-center gap-4 px-6 py-4 
         cursor-pointer">
         <span className="material-symbols-outlined">search</span>
