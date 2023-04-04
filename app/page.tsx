@@ -8,11 +8,14 @@ export default async function Home() {
 
   return (
     <div className="">
+
       <div className="my-8 flex justify-between items-center">
         <SearchBar />
         <FilterDropDown />
       </div>
-      <CountryList {...{countries}} />
+
+      <CountryList  {...{countries}} />
+
     </div>
   )
 }

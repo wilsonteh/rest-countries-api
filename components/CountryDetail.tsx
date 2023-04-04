@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Label from "./Label";
 import Image from "next/image";
 import { fetchCountryByCode } from "@/utils/dataFetching";
+import Loading from "@/app/loading";
 
 interface Country {
   borderCountries?: string[]; // may'nt hav 'borders' property (e.g: Singapore)
@@ -96,7 +97,6 @@ const CountryDetail = (countryData: any) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   useEffect(() => {
     country.borderCountries?.map(async (code: string) => {
       const borderCountry = await fetchCountryByCode(code);
@@ -128,7 +128,7 @@ const CountryDetail = (countryData: any) => {
       </button>
 
       { !isLoading ? (
-        <div> Loading... </div>
+        <Loading />
       ) : (
         <main className="grid grid-cols-[1fr_1.5fr] justify-center gap-12">
           <section className="relative m-8">
@@ -241,7 +241,7 @@ const CountryDetail = (countryData: any) => {
           </section>
 
         </main>
-      )}
+        )}
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import Header from '@/components/Header'
 import './index.css'
 import '@/google-fonts/icons.css'
-import { Nunito_Sans, Roboto, Nunito } from 'next/font/google';
+import { Nunito } from 'next/font/google';
+import { Oval } from 'react-loader-spinner';
 
 const nunito = Nunito({
   subsets: ['latin'],
@@ -21,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className='w-[90%] mx-auto'>
           {children}
         </div>
-        
+      
       </body>
     </html>
   )

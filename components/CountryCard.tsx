@@ -1,3 +1,4 @@
+import { thousandSeparator } from "@/utils/Utils";
 import Image from "next/image";
 import Link from "next/link";
 import normalizedStr from "replace-special-characters";
@@ -18,7 +19,7 @@ const CountryCard = (country: any) => {
         <div className="py-4">
           <div>
             <span className="font-semibold">Population: </span>
-            <span className="font-light"> { country.population } </span>
+            <span className="font-light"> { thousandSeparator(country.population) } </span>
           </div>
           <div> 
             <span className="font-semibold">Region: </span>
