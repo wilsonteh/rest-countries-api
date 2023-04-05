@@ -1,7 +1,5 @@
-import Loading from "@/app/loading";
 import CountryDetail from "@/components/CountryDetail";
 import { fetchCountryByName } from "@/utils/dataFetching";
-import { Suspense } from "react";
 
 interface Props {
   params: {

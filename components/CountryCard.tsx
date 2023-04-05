@@ -4,14 +4,13 @@ import Link from "next/link";
 import normalizedStr from "replace-special-characters";
 
 const CountryCard = (country: any) => {
-  // make country name with > 1 word separated with dash("-") rather than space(" ")
   let countryName = (country.name.official).toLowerCase();
 
   return (
     <div className="flex flex-col bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 
       rounded-md" >
       <div className="h-[200px] block relative">
-        <Image src={country.flags.svg} alt={country.flags.alt} 
+        <Image src={country.flags.svg} alt={country.flags.alt || country.name.official } 
           className="rounded-md object-cover" fill={true} />
       </div>
 

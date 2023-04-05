@@ -14,7 +14,7 @@ const Label = ({ text, className, style, children }: Props) => {
       ${className}`} style={style} >
 
       { children }
-    <span className="relative z-10"> {text} </span>
+      <span className="relative z-10"> {text} </span>
 
     </div>
     

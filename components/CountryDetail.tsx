@@ -115,6 +115,9 @@ const CountryDetail = (countryData: any) => {
 
   }, [country]);
 
+  console.log(country);
+  
+
   return (
     <div className="dark:text-slate-200">
 
@@ -130,17 +133,21 @@ const CountryDetail = (countryData: any) => {
       { !isLoading ? (
         <Loading />
       ) : (
-        <main className="grid grid-cols-[1fr_1.5fr] justify-center gap-12">
-          <section className="relative m-8">
-            <Image src={country.flag.svg} alt={country.flag.alt}
+        <main className="flex flex-col lg:grid lg:grid-cols-[1fr_1.4fr] justify-center xl:gap-12">
+          <section className="relative mt-4 lg:m-8 h-[200px] lg:h-auto">
+            <Image src={country.flag.svg} alt={country.flag.alt || country.name}
               className="object-contain" fill={true} />
           </section>
 
-          <section className="flex flex-col gap-4 p-8">
-            <h1 className="text-2xl font-extrabold"> { country.name } </h1>
+          <section className="flex flex-col gap-4 p-2 xs:p-0 sm:p-4">
+            <h1 className="text-2xl font-extrabold text-center lg:text-left"> { country.name } </h1>
 
-            <div className="grid grid-cols-2 gap-y-8">
-              <div className="flex flex-col gap-1 font-semibold">
+            <div className="flex flex-col xs:grid xs:grid-cols-2 gap-y-4 xs:gap-y-1 sm:gap-y-4 gap-x-1 sm:gap-x-4
+              text-center xs:text-left">
+
+              <div className="flex flex-col gap-1 font-semibold bg-slate-100 dark:bg-slate-750 px-3 
+                sm:px-8 py-4 rounded-t-3xl xs:rounded-tr-none xs:rounded-tl-3xl 
+                shadow-[1px_2px_10px_hsl(0,0%,80%)] dark:shadow-[1px_2px_10px_hsl(0,0%,10%)]">
                 <div className="">
                   <span>Native Name: </span>
                   <span className="font-light"> {country.nativeName} </span>
@@ -169,7 +176,7 @@ const CountryDetail = (countryData: any) => {
                   <span>Capital: </span>
                   <span className="font-light"> { country.capital } </span>
                 </div>
-                <div className="flex">
+                <div className="flex justify-center xs:justify-start">
                   <span>Maps:&nbsp;</span>
                   <div className="flex gap-1">
                     <Link href={country.maps.googleMaps} target="_blank"
@@ -192,7 +199,9 @@ const CountryDetail = (countryData: any) => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1 font-semibold">
+              <div className="flex flex-col gap-1 font-semibold bg-slate-100 dark:bg-slate-750 px-3 
+                sm:px-8 py-4 xs:rounded-tr-3xl 
+                shadow-[1px_2px_10px_hsl(0,0%,80%)] dark:shadow-[1px_2px_10px_hsl(0,0%,10%)]">
                 <div className="">
                   <span>Top Level Domain: </span>
                   <span className="font-light"> {country.topLevelDomain} </span>
@@ -217,16 +226,18 @@ const CountryDetail = (countryData: any) => {
                 </div>
               </div>
 
-              <div className="col-span-2">
+              <div className="col-span-2 text-center lg:text-left bg-slate-100 dark:bg-slate-750  
+                px-8 py-4 rounded-b-3xl xs:rounded-b-3xl 
+                shadow-[1px_2px_10px_hsl(0,0%,80%)] dark:shadow-[1px_2px_10px_hsl(0,0%,10%)]">
                 <div className="">
                   <div className="font-semibold">Border Countries:</div>
-                  <div className="flex justify-start gap-4 flex-wrap">
-                    {borderCountries?.map((country, i) => (
+                  <div className="flex justify-center lg:justify-start gap-4 flex-wrap mt-4">
+                    { borderCountries?.map((country, i) => (
                       <Link key={i} href={`/country/${country.name}`}>
                         <Label text={country.name} style={{ backgroundImage: `url(${country.flag})` }}
                           className="relative border-2 bg-contain bg-left bg-repeat text-slate-200 
                           opacity-60 transition-all duration-200 ease-in-out py-1 hover:scale-105 
-                          hover:opacity-80 dark:border-slate-500 dark:hover:border-slate-200" 
+                          hover:opacity-100 dark:border-slate-500 dark:hover:border-slate-200" 
                           >
                           <div className="overlay absolute left-0 top-0 h-full w-full rounded-full 
                             bg-black opacity-60" />

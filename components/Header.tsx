@@ -21,7 +21,7 @@ const Header = () => {
 
   useEffect(() => {
     setTheme(localStorage.theme)
-  }, [theme])
+  }, [theme])             
   
 
   return (
