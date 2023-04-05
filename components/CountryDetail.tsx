@@ -115,9 +115,6 @@ const CountryDetail = (countryData: any) => {
 
   }, [country]);
 
-  console.log(country);
-  
-
   return (
     <div className="dark:text-slate-200">
 
