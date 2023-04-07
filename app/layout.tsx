@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${nunito.className} dark transition-all duration-500`}>
+    <html lang="en" className={`${nunito.className} dark`}>
       <body className='bg-slate-200 dark:bg-slate-800'>
         <Header />
 

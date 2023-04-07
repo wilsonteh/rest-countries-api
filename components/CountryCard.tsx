@@ -1,10 +1,9 @@
 import { thousandSeparator } from "@/utils/Utils";
 import Image from "next/image";
 import Link from "next/link";
-import normalizedStr from "replace-special-characters";
 
 const CountryCard = (country: any) => {
-  let countryName = (country.name.official).toLowerCase();
+  let countryName = country.name.official.toLowerCase();
 
   return (
     <div className="flex flex-col bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 
