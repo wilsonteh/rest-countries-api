@@ -11,10 +11,10 @@ const FilterDropDown = ({ className, numOfCountries }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const continentQuery = searchParams.get('continent');
   const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   const [isDropDown, setIsDropDown] = useState<boolean>(false);
   const [selectedContinent, setSelectedContinent] = useState<string|null>(null);
-  // const continentQuery = searchParams.get('continent');
 
   const createQueryString = useCallback((query: string, value: string) => {
     const params = new URLSearchParams(searchParams);
@@ -70,7 +70,7 @@ const FilterDropDown = ({ className, numOfCountries }: Props) => {
           </datalist> }
       </div>
 
-      { selectedContinent &&
+      { selectedContinent && continentQuery && 
         <div className="dark:text-slate-200 text-sm">
           {`${numOfCountries} countries found in ${selectedContinent}`}
         </div> }

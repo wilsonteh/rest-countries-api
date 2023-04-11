@@ -37,7 +37,8 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 py-4">
+    <header className="bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 py-4
+      sticky top-0 z-10 shadow-[0_2px_20px_hsl(0,0%,70%)] dark:shadow-[0_2px_20px_hsl(0,0%,10%)]">
       <div className="w-[90%] mx-auto flex justify-between items-center">
         <Link href={"/"} className="text-xl font-extrabold">
           Where in the world?

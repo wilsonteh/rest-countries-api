@@ -14,6 +14,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
     })
   }
   
+
   return (
     <div className="px-4 xs:px-8 sm:px-0">
 
