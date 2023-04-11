@@ -1,17 +1,32 @@
 "use client";
-import { useSearchParams } from 'next/navigation';
-import CountryCard from './CountryCard';
-import { useEffect, useState } from 'react';
+import CountryCard from "./CountryCard";
+import { useEffect, useState } from "react";
 
-const CountryList = ({ countries }: any) => {
+interface Props {
+  countries: any;
+  isFilterLoading: boolean;
+  setIsFilterLoading: (isLoading: boolean) => void;
+}
+
+const CountryList = ({ countries, isFilterLoading, setIsFilterLoading }: Props) => {
+
+  useEffect(() => {
+    console.log("countries data changed");
+    setIsFilterLoading(false);
+    
+  }, [countries, setIsFilterLoading]);
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 xl:gap-16 my-8">
-      { countries.map((country: any, i: number) => (
-        <CountryCard key={i} {...country} />
-      )) }
-    </section>
+    isFilterLoading ? (
+      <div className="text-slate-200">Loading ... </div>
+    ) : (
+      <section className="my-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-16">
+        {countries.map((country: any, i: number) => (
+          <CountryCard key={i} {...country} />
+        ))}
+      </section>
+    )
   );
-}
- 
+};
+
 export default CountryList;

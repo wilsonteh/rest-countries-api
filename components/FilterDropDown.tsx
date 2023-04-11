@@ -1,13 +1,16 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
+import { Oval } from "react-loader-spinner";
 
 interface Props {
   className?: string;
   numOfCountries: number;
+  isFilterLoading: boolean;
+  setIsFilterLoading: (isLoading: boolean) => void;
 }
 
-const FilterDropDown = ({ className, numOfCountries }: Props) => {
+const FilterDropDown = ({ className, numOfCountries, isFilterLoading, setIsFilterLoading }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -23,32 +26,39 @@ const FilterDropDown = ({ className, numOfCountries }: Props) => {
     return params.toString();
   }, [searchParams]);
   
+  // when a continent from the filter dropdown is clicked
   const handleContinentFilter = (continent: string) => {
     setIsDropDown(!isDropDown)
     setSelectedContinent(continent);
+    setIsFilterLoading(true);
     continent = continent.toLowerCase()
     router.push(`${pathname}?${createQueryString('continent', continent)}`)
   }
 
+  // when "clear filter" button is clicked
   const handleClearFilter = () => {
     setSelectedContinent(null);
+    setIsFilterLoading(true);
     // remove just the 'continent' query from url
     const params = new URLSearchParams(searchParams);
     params.delete('continent');
     router.push(`${pathname}?${params.toString()}`)
   }
 
-
   return (
-    <div className="dropdown flex flex-col gap-2 items-center">
+    <div className={`dropdown flex flex-col gap-2 items-center ${className}`}>
       <div className="">
-        <label tabIndex={0} className="bg-slate-50 dark:bg-slate-700 dark:text-slate-200 flex justify-between 
-          items-center gap-2 px-6 py-4 rounded-md cursor-pointer"
+        <label tabIndex={0} className={`bg-slate-50 dark:bg-slate-700 dark:text-slate-200 flex justify-between 
+          items-center gap-2 px-6 py-4 rounded-md ${isFilterLoading ? 'cursor-not-allowed' : 'cursor-pointer'}`}
           onClick={() => setIsDropDown(!isDropDown)} >
-          <span>Filter by { selectedContinent ? selectedContinent : 'Continent' }</span>
-          <span className="material-symbols-outlined">
-            { isDropDown ? 'arrow_drop_up' : 'arrow_drop_down' }
-          </span>
+            { isFilterLoading && 
+              <Oval width={20} height={20} 
+                color="#e2e8f0" secondaryColor="#020617"  
+                /> } 
+              <span>Filter by { selectedContinent ?? 'Continent' }</span>
+              <span className="material-symbols-outlined">
+                { isDropDown ? 'arrow_drop_up' : 'arrow_drop_down' }
+              </span>
         </label>
 
         { isDropDown && 
@@ -74,11 +84,8 @@ const FilterDropDown = ({ className, numOfCountries }: Props) => {
         <div className="dark:text-slate-200 text-sm">
           {`${numOfCountries} countries found in ${selectedContinent}`}
         </div> }
-        
+
     </div>
-
-
-      
 
   );
 }
