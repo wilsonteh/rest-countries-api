@@ -1,4 +1,7 @@
+"use client";
+import { useSearchParams } from 'next/navigation';
 import CountryCard from './CountryCard';
+import { useEffect, useState } from 'react';
 
 const CountryList = ({ countries }: any) => {
 
