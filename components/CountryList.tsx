@@ -1,6 +1,7 @@
 "use client";
 import CountryCard from "./CountryCard";
 import { useEffect, useState } from "react";
+import CountryListSkeleton from "./skeletons/CountryListSkeleton";
 
 interface Props {
   countries: any;
@@ -18,7 +19,7 @@ const CountryList = ({ countries, isFilterLoading, setIsFilterLoading }: Props) 
 
   return (
     isFilterLoading ? (
-      <div className="text-slate-200">Loading ... </div>
+      <CountryListSkeleton numOfCard={20} />
     ) : (
       <section className="my-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-16">
         {countries.map((country: any, i: number) => (

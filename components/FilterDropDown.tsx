@@ -47,7 +47,7 @@ const FilterDropDown = ({ className, numOfCountries, isFilterLoading, setIsFilte
 
   return (
     <div className={`dropdown flex flex-col gap-2 items-center ${className}`}>
-      <div className="">
+      <div className="w-full">
         <label tabIndex={0} className={`bg-slate-50 dark:bg-slate-700 dark:text-slate-200 flex justify-between 
           items-center gap-2 px-6 py-4 rounded-md ${isFilterLoading ? 'cursor-not-allowed' : 'cursor-pointer'}`}
           onClick={() => setIsDropDown(!isDropDown)} >

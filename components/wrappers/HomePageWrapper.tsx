@@ -11,18 +11,12 @@ interface Props {
 const HomePageWrapper = ({ countries }: Props) => {
   const [isFilterLoading, setIsFilterLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    console.log("isFilterLoading", isFilterLoading);
-    
-  }, [isFilterLoading])
-  
-
   return (
     <>
-      <div className="my-8 flex flex-col items-start justify-center gap-3 md:flex-row md:items-center 
+      <div className="my-8 py-4 flex flex-col items-start justify-center gap-3 md:flex-row md:items-center 
         md:justify-between">
-        <SearchBar className="self-start" />
-        <FilterDropDown className="self-stretch xs:self-auto" 
+        <SearchBar className="self-stretch md:self-start" />
+        <FilterDropDown className="w-full xs:w-auto xs:self-start" 
           numOfCountries={countries.length} 
           isFilterLoading={isFilterLoading}
           setIsFilterLoading={setIsFilterLoading} 
