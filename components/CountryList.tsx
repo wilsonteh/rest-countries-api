@@ -12,7 +12,6 @@ interface Props {
 const CountryList = ({ countries, isFilterLoading, setIsFilterLoading }: Props) => {
 
   useEffect(() => {
-    console.log("countries data changed");
     setIsFilterLoading(false);
     
   }, [countries, setIsFilterLoading]);

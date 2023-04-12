@@ -2,6 +2,7 @@ import CountryList from "@/components/CountryList";
 import FilterDropDown from "@/components/FilterDropDown";
 import SearchBar from "@/components/SearchBar";
 import HomePageWrapper from "@/components/wrappers/HomePageWrapper";
+import { isValidContinent } from "@/utils/Utils";
 import { fetchAllCountries } from "@/utils/dataFetching";
 
 export default async function Home({ searchParams }: { searchParams: any }) {
@@ -9,11 +10,11 @@ export default async function Home({ searchParams }: { searchParams: any }) {
   let filteredCountries = countriesData;
   const { continent: continentQuery } = searchParams;
   
-  if (continentQuery) {   
+  if (continentQuery && isValidContinent(continentQuery)) {   
     filteredCountries = countriesData.filter((country: any) => {
       return country.region.toLowerCase() === continentQuery;
     })
-  }
+  } 
   
 
   return (

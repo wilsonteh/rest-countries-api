@@ -2,6 +2,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 import { Oval } from "react-loader-spinner";
+import { continents as regions } from "@/public/staticData";
 
 interface Props {
   className?: string;
@@ -15,7 +16,6 @@ const FilterDropDown = ({ className, numOfCountries, isFilterLoading, setIsFilte
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const continentQuery = searchParams.get('continent');
-  const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   const [isDropDown, setIsDropDown] = useState<boolean>(false);
   const [selectedContinent, setSelectedContinent] = useState<string|null>(null);
 
@@ -71,8 +71,8 @@ const FilterDropDown = ({ className, numOfCountries, isFilterLoading, setIsFilte
                   Clear Filtering
                 </button> }
               { regions.map((region, i) => (
-                <option key={i} className="cursor-pointer px-2 py-2 rounded-md text-center hover:bg-slate-200 
-                dark:hover:bg-slate-750" value={region}
+                <option key={i} className="cursor-pointer px-2 py-2 rounded-md text-center capitalize 
+                hover:bg-slate-200 dark:hover:bg-slate-750" value={region}
                 onClick={() => handleContinentFilter(region)} > 
                   { region } 
                 </option>
