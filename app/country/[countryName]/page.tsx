@@ -14,7 +14,7 @@ export default async function CountryDetailPage({ params }: Props) {
   return (
     <div>
       <h1 className="dark:text-slate-200"> Params: { params.countryName } </h1>
-
+      
       <CountryDetail {...countryData} />
 
     </div>
